@@ -1,6 +1,5 @@
 import imgCoreConcepts from './assets/react-core-concepts.png'
-import imgJSXUI from './assets/jsx-ui.png'
-import imgStateMgmt from './assets/state-mgmt.png'
+import { CORE_CONCEPTS } from './data'
 
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core']
 
@@ -23,12 +22,12 @@ function Header() {
   )
 }
 
-function CoreConcepts({ imagePath, imgAlt, title, content }) {
+function CoreConcepts({ image, title, description }) {
   return (
     <li>
-      <img src={imagePath} alt={imgAlt} />
+      <img src={image} alt={title} />
       <h3>{title}</h3>
-      <p>{content}</p>
+      <p>{description}</p>
     </li>
   )
 }
@@ -40,18 +39,9 @@ function App() {
       <section id='core-concepts'>
         <h2>Core Concepts</h2>
         <ul>
-          <CoreConcepts
-            imagePath={imgJSXUI}
-            imgAlt='Image from Mano'
-            title='Mano'
-            content='Mano content'
-          />
-          <CoreConcepts
-            imagePath={imgStateMgmt}
-            imgAlt='Image from Truta'
-            title='Truta'
-            content='Truta content'
-          />
+          {CORE_CONCEPTS.map((concept) => (
+            <CoreConcepts {...concept} />
+          ))}
         </ul>
       </section>
       <main>
